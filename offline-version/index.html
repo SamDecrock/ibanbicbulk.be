@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>IBAN BIC kolom converter</title>
+	<title>IBAN BIC multi calculator</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" type="text/css" />
@@ -18,14 +18,14 @@
 <body>
 	<div class="container">
 		<div class="hero-unit">
-			<h1>IBAN BIC kolom converter</h1>
-			<p>Deze converter zet de BBAN (gewone rekeningnummers) om naar de nieuwe BIC/IBAN vorm</p>
+			<h1>IBAN BIC multi calculator</h1>
+			<p>Deze calculator zet de BBAN (gewone rekeningnummers) om naar de nieuwe BIC/IBAN vorm volgens de officiële <a href="http://www.sepabelgium.be/files/Standard-IBAN-BIC-BBAN-v3-NL.pdf">SEPA richtlijnen</a></p>
 		</div>
 
 		<div class="row">
 			<div class="span4">
 				<h2>BBAN</h2>
-				<p>plak hier de kolom met de gewone BBAN rekeningnummers</p>
+				<p>plak hier een lijst met de gewone BBAN rekeningnummers (bvb een kolom uit Excel)</p>
 			</div>
 
 			<div class="span4">
@@ -40,7 +40,7 @@
 		<div class="row">
 			<div class="span4">
 				<textarea id="bban"></textarea>
-				<button id="convert">Converteer</button>
+				<button id="convert" class="btn btn-primary btn-large">Converteer</button>
 			</div>
 
 			<div class="span4">
@@ -50,11 +50,17 @@
 			<div class="span4">
 				<textarea id="bic"></textarea>
 			</div>
-		</div><br />
+		</div>
+
+		<br />
 
 		<div class="progress">
 			<div id="progressbar" style="width: 0%;" class="bar"></div>
 		</div>
+
+		<span id="stats"></span>
+
+		    <div class="alert alert-info">De berekening van de rekeningnummers gebeurt volledig in uw browser. De rekeningnummers blijven dus veilig.</div>
 
 		<hr />
 

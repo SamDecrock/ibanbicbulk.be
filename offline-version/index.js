@@ -12,11 +12,19 @@ $(function(){
 		var bbans = $("#bban").val().split('\n');
 		var total = bbans.length;
 		var count = 0;
+		var converted = 0;
+		var startTime = new Date();
 
 		for(var i in bbans){
 			var bban = bbans[i];
 			var iban = BBANtoIBAN(bban);
-			var bic = BBANtoBIC(bban);
+			var bic = "";
+			if(iban !== "")
+				var bic = BBANtoBIC(bban);
+
+			if(iban != "" && bic != "")
+				converted++;
+			
 
 			$("#iban").val( $("#iban").val() + iban);
 			$("#bic").val( $("#bic").val() + bic);
@@ -29,6 +37,10 @@ $(function(){
 			count++;
 			$("#progressbar").css("width", count/total*100 + "%");
 		}
+
+		var seconds = ( (new Date()).getTime() - startTime.getTime() )/1000;
+		$("#stats").html(converted + " rekeningnummers geconverteerd in " + seconds.toFixed(3) + " seconden");
+
 	});
 
 
@@ -69,6 +81,10 @@ function BBANtoIBAN(bban) {
 	var mod = (bigInt.remainder(97)).toJSValue(); //modulo berekenen terug naar int omzetten
 
 	var x = 98 - mod;
+
+	if(x < 10)
+		x = "0" + x;
+	
 	var iban = "BE" + x + " " + bban.substr(0,4) + " " + bban.substr(4,4) + " " + bban.substr(8,4); //spaties tss steken
 
 	if(checkIban(iban))
