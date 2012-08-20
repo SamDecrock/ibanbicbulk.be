@@ -23,8 +23,8 @@ webserver.configure('development', function(){
 webserver.configure('production', function(){
 	webserver.use(express.errorHandler()); 
 });
-webserver.listen(3000);
-console.log("Express server listening on port %d", webserver.address().port);
+webserver.listen(8080);
+//console.log("Express server listening on port %d", webserver.address().port);
 
 
 //Set up socket io

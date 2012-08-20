@@ -1,0 +1,21 @@
+{
+  "name": "ibanbic",
+  "version": "0.0.0-1",
+  "dependencies": {
+    "express": "2.5.x",
+    "http-get": "0.4.x",
+    "step": "0.0.x",
+    "xml-mapping": "1.0.x",
+    "stylus": "0.29.x",
+    "jade": "",
+    "async": "0.1.x",
+    "socket.io": "0.9.x"
+  },
+  "subdomain": "ibanbic",
+  "scripts": {
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  }
+}
