@@ -135,7 +135,11 @@ function BBANtoIBAN(bban, callback) {
 				var json = xm.load(result.buffer);
 				if(json.string.$t)
 					iban = json.string.$t;
-				callback(null, iban);
+
+				if(iban.indexOf("You have reached") != -1)
+					callback(new Error(iban));
+				else
+					callback(null, iban);
 			}
 		}
 	);
@@ -154,7 +158,11 @@ function BBANtoBIC(bban, callback) {
 				var json = xm.load(result.buffer);
 				if(json.string.$t)
 					bic = json.string.$t;
-				callback(null, bic);
+
+				if(bic.indexOf("You have reached") != -1)
+					callback(new Error(bic));
+				else
+					callback(null, bic);
 			}
 		}
 	);
